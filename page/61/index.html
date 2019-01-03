@@ -67,10 +67,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-alarmclock" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-html_share_style" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2017/11/11/alarmclock/" class="article-date">
-  <time datetime="2017-11-10T16:00:00.000Z" itemprop="datePublished">2017-11-11</time>
+    <a href="../../2018/03/18/html_share_style/" class="article-date">
+  <time datetime="2018-03-17T16:00:00.000Z" itemprop="datePublished">2018-03-18</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2017/11/11/alarmclock/">alarmclock 定时闹钟</a>
+      <a class="article-title" href="../../2018/03/18/html_share_style/">tohtml_style 共享样式工具</a>
     </h1>
   
 
@@ -90,17 +90,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>蘭雅sRGB 龙芯小本服务器  <a href="http://sRGB.vicp.net">http://sRGB.vicp.net</a></p>
-<p><a href="https://github.com/hongwenjun/alarmclock" target="_blank" rel="noopener">https://github.com/hongwenjun/alarmclock</a></p>
-<h1 id="alarmclock"><a href="#alarmclock" class="headerlink" title="alarmclock"></a>alarmclock</h1><p>windows 控制台定时闹钟</p>
-<p>命令行 或者 批处理 使用以下命令， 到技时 20秒后开启指定的程序<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alarmclock.exe  <span class="number">20</span> <span class="string">"C:\soft\foobar2000\foobar2000.exe"</span></span><br></pre></td></tr></table></figure></p>
-<p>分享: 控制台写个闹钟程序 分解,解释文章<br><a href="http://bbs.csdn.net/topics/392285253" target="_blank" rel="noopener">http://bbs.csdn.net/topics/392285253</a></p>
-<p>编写和调试工具 IDE<br>CodeBlocks SVN 11112版 双11特别版<br><a href="http://bbs.csdn.net/topics/392284220" target="_blank" rel="noopener">http://bbs.csdn.net/topics/392284220</a></p>
-<p><img src="http://img.bbs.csdn.net/upload/201711/10/1510289090_391006.png" alt=""></p>
+<p><a href="https://github.com/hongwenjun/tohtml_style" target="_blank" rel="noopener">https://github.com/hongwenjun/tohtml_style</a></p>
+<h1 id="tohtml-style"><a href="#tohtml-style" class="headerlink" title="tohtml_style"></a>tohtml_style</h1><ol>
+<li><p>先使用 VIM 的 TOhtml 把文本转换成 html</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">vim</span> <span class="selector-tag">-c</span> <span class="selector-pseudo">:TOhtml</span> <span class="selector-tag">-c</span> <span class="selector-pseudo">:wqa</span>  <span class="selector-tag">mycode</span><span class="selector-class">.cpp</span></span><br><span class="line"><span class="selector-tag">vim</span> <span class="selector-tag">-c</span> <span class="selector-pseudo">:TOhtml</span> <span class="selector-tag">-c</span> <span class="selector-pseudo">:wqa</span>  <span class="selector-tag">mydoc</span><span class="selector-class">.txt</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再使用本工具 html_share_style 把编辑好的样式共享给 html文件</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Usage:</span> html_share_style  <span class="params">&lt;file.html&gt;</span>  <span class="params">&lt;from.html&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/hongwenjun/tohtml_style/master/usage.webp" alt=""></p>
+<h1 id="附送-git-bash环境设置使用TDM-GCC-64"><a href="#附送-git-bash环境设置使用TDM-GCC-64" class="headerlink" title="附送  git-bash环境设置使用TDM-GCC 64"></a>附送  git-bash环境设置使用TDM-GCC 64</h1><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">编辑 Git\etc\fstab</span><br><span class="line">添加一行<span class="comment">(填入对应GCC路径)</span></span><br><span class="line">C:/CodeBlocks/Mi<span class="symbol">nGW64</span>       /mi<span class="symbol">ngw64</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/hongwenjun/tohtml_style/master/git-bash_gcc.png" alt=""></p>
+<h1 id="附送-vimrc"><a href="#附送-vimrc" class="headerlink" title="附送 .vimrc"></a>附送 .vimrc</h1><p>“ .vimrc   请把本文件 _vimrc 改成 .vimrc 放到 ~目录</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2017/11/11/alarmclock/" data-id="cjor9rmdb000dyoft9pxpcjn7" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/03/18/html_share_style/" data-id="cjqgj8tfk0018eoft4xevqnxo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/cpp/">cpp</a></li></ul>
@@ -116,7 +123,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../60/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../59/">59</a><a class="page-number" href="../60/">60</a><span class="page-number current">61</span><a class="page-number" href="../62/">62</a><a class="extend next" rel="next" href="../62/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="../60/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../59/">59</a><a class="page-number" href="../60/">60</a><span class="page-number current">61</span><a class="page-number" href="../62/">62</a><a class="page-number" href="../63/">63</a><span class="space">&hellip;</span><a class="page-number" href="../65/">65</a><a class="extend next" rel="next" href="../62/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -140,7 +147,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -149,7 +156,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -162,23 +169,23 @@
       <ul>
         
           <li>
+            <a href="../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../2018/11/21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../2018/11/17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/lnmp_org/">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -193,7 +200,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

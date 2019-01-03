@@ -67,10 +67,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-vim_tags" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2018/05/16/vim_tags/" class="article-date">
-  <time datetime="2018-05-15T16:00:00.000Z" itemprop="datePublished">2018-05-16</time>
+    <a href="../../2018/05/21/shadowsocks/" class="article-date">
+  <time datetime="2018-05-20T16:00:00.000Z" itemprop="datePublished">2018-05-21</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2018/05/16/vim_tags/">VIM代码跳转功能视频</a>
+      <a class="article-title" href="../../2018/05/21/shadowsocks/">shadowsocks 客户端安装</a>
     </h1>
   
 
@@ -90,33 +90,81 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>蘭雅sRGB 龙芯小本服务器 | <a href="http://sRGB.vicp.net">sRGB.vicp.net</a></p>
-<p><img src="/webp/vim_tags.webp" alt=""></p>
-<h2 id="vim中跳转到头文件"><a href="#vim中跳转到头文件" class="headerlink" title="vim中跳转到头文件"></a>vim中跳转到头文件</h2><ul>
-<li>按 gf 跳转到指定头文件</li>
-<li>按 Ctrl+o 返回原来文件</li>
-<li>无法解决: .vimrc中添加 set path==xxx(头文件所在目录)</li>
+<h1 id="手机下载安装"><a href="#手机下载安装" class="headerlink" title="手机下载安装"></a>手机下载安装</h1><p>shadowsocks android手机 <a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">下载地址</a></p>
+<p><a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-android/releases</a></p>
+<p>安装后，填实际的帐号参数</p>
+<pre><code>服务器：188.188.188.188
+端口：2018
+密码：teddysun.com
+加密方式：aes-256-cfb
+</code></pre><h3 id="苹果手机使用app可以选用免费的-wingy"><a href="#苹果手机使用app可以选用免费的-wingy" class="headerlink" title="苹果手机使用app可以选用免费的 wingy"></a>苹果手机使用app可以选用免费的 wingy</h3><hr>
+<h1 id="Shadowsocks-Windows-使用说明-转"><a href="#Shadowsocks-Windows-使用说明-转" class="headerlink" title="Shadowsocks Windows 使用说明(转)"></a>Shadowsocks Windows 使用说明(转)</h1><p><a href="https://github.com/shadowsocks/shadowsocks-windows/wiki" target="_blank" rel="noopener">原文</a></p>
+<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ol>
+<li>系统代理设置</li>
+<li>PAC 模式和全局模式</li>
+<li><a href="https://github.com/gfwlist/gfwlist" target="_blank" rel="noopener">GFWList</a> 和用户规则</li>
+<li>支持 HTTP 代理</li>
+<li>支持多服务器切换</li>
+<li>支持 UDP 代理</li>
+<li>支持插件</li>
+</ol>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>下载 <a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">最新版</a>。</p>
+<p>需要安装 <a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=53344" target="_blank" rel="noopener">.NET Framework 4.6.2</a> 和 Microsoft <a href="https://www.microsoft.com/en-us/download/details.aspx?id=53840" target="_blank" rel="noopener">Visual C++ 2015 Redistributable</a> (x86)</p>
+<p>从 2.5.8 开始你可以在 Releases 页面找到 exe 文件的 hash 值，你可以使用 <a href="https://support.microsoft.com/en-us/kb/841290" target="_blank" rel="noopener">fciv</a> 等工具 校验 <code>Shadowsocks.exe</code> 文件. 例如 <code>fciv.exe -both -add Shadowsocks.exe</code></p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><ol>
+<li>在任务栏找到 Shadowsocks 图标</li>
+<li>在 服务器 菜单添加多个服务器</li>
+<li>选择 <code>启用系统代理</code> 来启用系统代理。请禁用浏览器里的代理插件，或把它们设置为使用系统代理。</li>
+<li>除了设为系统代理，你也可以直接自己配置浏览器代理。在 <a href="https://github.com/FelisCatus/SwitchyOmega" target="_blank" rel="noopener">SwitchyOmega</a> 中把代理设置为 SOCKS5 或 HTTP 的 127.0.0.1:1080。这个 1080 端口可以在服务器设置中设置。</li>
+</ol>
+<h4 id="PAC"><a href="#PAC" class="headerlink" title="PAC"></a>PAC</h4><ol>
+<li>可以编辑 PAC 文件来修改 PAC 设置。Shadowsocks 会监听文件变化，修改后会自动生效。</li>
+<li>你也可以从 <a href="https://github.com/gfwlist/gfwlist" target="_blank" rel="noopener">GFWList</a> （由第三方维护）更新 PAC 文件。</li>
+<li>你也可以使用在线 PAC URL</li>
+</ol>
+<h4 id="服务器自动切换"><a href="#服务器自动切换" class="headerlink" title="服务器自动切换"></a>服务器自动切换</h4><ol>
+<li>负载均衡：随机选择服务器</li>
+<li>高可用：根据延迟和丢包率自动选择服务器</li>
+<li>累计丢包率：通过定时 ping 来测速和选择。如果要使用本功能，请打开菜单里的<code>统计可用性</code>。</li>
+<li>也可以实现 IStrategy 接口来自定义切换规则，然后给我们发一个 pull request。</li>
+</ol>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><p>对于 UDP，请使用 SocksCap 或 ProxyCap 强制你想使用的程序走代理。</p>
+<h4 id="多实例"><a href="#多实例" class="headerlink" title="多实例"></a>多实例</h4><p>如果想使用其它工具如 <a href="https://github.com/FelisCatus/SwitchyOmega" target="_blank" rel="noopener">SwitchyOmega</a> 管理多个服务器，可以启动多个 Shadowsocks。<br>为了避免配置产生冲突，把 Shadowsocks 复制到一个新目录里，并给它设置一个新的本地端口。</p>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>若想通过插件来连接服务器，请到编辑服务器界面填入插件程序（相对路径或绝对路径）</p>
+<p><em>注意：</em> 在启用插件后，正向代理会被停用。</p>
+<h4 id="全局快捷键"><a href="#全局快捷键" class="headerlink" title="全局快捷键"></a>全局快捷键</h4><p>如果重启 Shadowsocks 则必须<strong>重新注册</strong>，因为此时环境可能发生变化，而且如果多开 Shadowsocks 则需要为后来启动的实例设置不同的快捷键。</p>
+<h5 id="怎样键入快捷键"><a href="#怎样键入快捷键" class="headerlink" title="怎样键入快捷键?"></a>怎样键入快捷键?</h5><ol>
+<li>点击想要设置的快捷键文本框。</li>
+<li>按下想要设置的组合键。</li>
+<li>当满足要求时释放全部按键。</li>
+<li>这时你输入的快捷键字符会出现在文本框中。</li>
+</ol>
+<h5 id="如何修改快捷键"><a href="#如何修改快捷键" class="headerlink" title="如何修改快捷键?"></a>如何修改快捷键?</h5><ol>
+<li>点击想要设置的快捷键文本框。</li>
+<li>按下 BackSpace（退格键）清除文本框内容。</li>
+<li>重新键入新的组合键。</li>
+</ol>
+<h5 id="如何取消激活"><a href="#如何取消激活" class="headerlink" title="如何取消激活?"></a>如何取消激活?</h5><ol>
+<li>清除你想要取消激活快捷键的文本框内容，如果想要取消全部，则清除全部文本框中的内容。</li>
+<li>点击确认按钮。</li>
+</ol>
+<h5 id="标签背景色含义"><a href="#标签背景色含义" class="headerlink" title="标签背景色含义"></a>标签背景色含义</h5><ul>
+<li>绿色: 此组合键未被其他程序占用，并且成功注册到系统里。</li>
+<li>黄色: 此组合键已被其他程序占用，你需要更换其他组合。</li>
+<li>透明无色: 初始状态</li>
 </ul>
-<h2 id="vim窗口分割的操作"><a href="#vim窗口分割的操作" class="headerlink" title="vim窗口分割的操作"></a>vim窗口分割的操作</h2><pre><code>:split    水平窗口分割  sp
-:vsplit   垂直窗口分割  vs
-ctrl+w+w  窗口之间进行切换
-</code></pre><h2 id="多窗口文件操作"><a href="#多窗口文件操作" class="headerlink" title="多窗口文件操作"></a>多窗口文件操作</h2><pre><code>vim -O 1.txt  2.txt 横向并排窗口打开多个文件 -o 纵向
-:sp newfile.txt     新开文件横向并排
-ctrl+w + q(quit), c(close), o(other)  窗口关闭
-ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
-</code></pre><h2 id="vim之函数跳转功能"><a href="#vim之函数跳转功能" class="headerlink" title="vim之函数跳转功能"></a>vim之函数跳转功能</h2><ul>
-<li>需要安装 ctags</li>
-<li><p>生成 tags 索引文件</p>
-<p>  ctags -R . 或者 ctags -R *<br>  ctrl + ] 跳转到函数定义<br>  ctrl + t 原路返回</p>
-</li>
-</ul>
+<h4 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h4><p>请访问 <a href="https://github.com/shadowsocks/shadowsocks/wiki/Ports-and-Clients#linux--server-side" target="_blank" rel="noopener">服务器</a> 获取更多信息。</p>
+<h4 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h4><p>需要 <a href="https://www.visualstudio.com/downloads/" target="_blank" rel="noopener">Visual Studio 2015</a> 或更高版本并安装 <a href="https://www.microsoft.com/download/details.aspx?id=53321" target="_blank" rel="noopener">.NET Framework 4.6.2 Developer Pack</a>。</p>
+<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p><a href="https://github.com/shadowsocks/shadowsocks-windows/blob/master/LICENSE.txt" target="_blank" rel="noopener">GPLv3</a></p>
+<h4 id="项目所使用到的第三方开源组件-库"><a href="#项目所使用到的第三方开源组件-库" class="headerlink" title="项目所使用到的第三方开源组件/库"></a>项目所使用到的第三方开源组件/库</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Caseless.Fody (MIT)    <span class="string">https:</span><span class="comment">//github.com/Fody/Caseless</span></span><br><span class="line">Costura.Fody (MIT)     <span class="string">https:</span><span class="comment">//github.com/Fody/Costura</span></span><br><span class="line">Fody (MIT)             <span class="string">https:</span><span class="comment">//github.com/Fody/Fody</span></span><br><span class="line">GlobalHotKey (GPLv3)   <span class="string">https:</span><span class="comment">//github.com/kirmir/GlobalHotKey</span></span><br><span class="line">Newtonsoft.Json (MIT)  <span class="string">https:</span><span class="comment">//www.newtonsoft.com/json</span></span><br><span class="line">StringEx.CS ()         <span class="string">https:</span><span class="comment">//github.com/LazyMode/StringEx</span></span><br><span class="line">ZXing.Net (Apache <span class="number">2.0</span>) <span class="string">https:</span><span class="comment">//github.com/micjahn/ZXing.Net</span></span><br><span class="line"></span><br><span class="line">libsscrypto (GPLv2)    <span class="string">https:</span><span class="comment">//github.com/shadowsocks/libsscrypto</span></span><br><span class="line">Privoxy (GPLv2)        <span class="string">https:</span><span class="comment">//www.privoxy.org</span></span><br><span class="line">Sysproxy ()            <span class="string">https:</span><span class="comment">//github.com/Noisyfox/sysproxy</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2018/05/16/vim_tags/" data-id="cjor9rmfl0021yoftf0f3ibnw" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/05/21/shadowsocks/" data-id="cjqgj8thi0028eoft2zzstwgp" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/vim/">vim</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/shadowsocks/">shadowsocks</a></li></ul>
 
     </footer>
   </div>
@@ -129,7 +177,7 @@ ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../36/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../35/">35</a><a class="page-number" href="../36/">36</a><span class="page-number current">37</span><a class="page-number" href="../38/">38</a><a class="page-number" href="../39/">39</a><span class="space">&hellip;</span><a class="page-number" href="../62/">62</a><a class="extend next" rel="next" href="../38/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="../36/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../35/">35</a><a class="page-number" href="../36/">36</a><span class="page-number current">37</span><a class="page-number" href="../38/">38</a><a class="page-number" href="../39/">39</a><span class="space">&hellip;</span><a class="page-number" href="../65/">65</a><a class="extend next" rel="next" href="../38/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -153,7 +201,7 @@ ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -162,7 +210,7 @@ ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -175,23 +223,23 @@ ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
       <ul>
         
           <li>
+            <a href="../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../2018/11/21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../2018/11/17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/lnmp_org/">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -206,7 +254,7 @@ ctrl+w + =    窗口等分、微调&lt; &gt; 水平 + - 垂直
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

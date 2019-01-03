@@ -101,17 +101,17 @@
 <h3 id="frps-配置文件也可以独立起来存放"><a href="#frps-配置文件也可以独立起来存放" class="headerlink" title="frps 配置文件也可以独立起来存放"></a>frps 配置文件也可以独立起来存放</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># frps 配置文件，存放 /etc/nginx/sites-enabled</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span> $http_x_forwarded_for $clientRealip &#123;</span><br><span class="line">   <span class="string">""</span> $remote_addr;</span><br><span class="line">   ~^(?P&lt;firstAddr&gt;[<span class="number">0</span><span class="number">-9</span>\.]+),?.*$  $firstAddr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">       listen <span class="number">80</span>;</span><br><span class="line">       server_name frp.srgb.xyz;  #为frp的控制台绑定一个域名，这样你就可以用http:<span class="comment">//frp.srgb.xyz访问你的控制台了</span></span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass http:<span class="comment">//127.0.0.1:7500;  #此处的7500就是你安装frp时设置的dashboard_port端口</span></span><br><span class="line">           proxy_set_header Host $host;</span><br><span class="line">           proxy_set_header X-Real-IP $clientRealip;  # $remote_addr;</span><br><span class="line">           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">       listen <span class="number">80</span>;</span><br><span class="line">       server_name s.srgb.xyz;   #也可以将所有的srgb.xyz子域名都绑定，</span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass http:<span class="comment">//127.0.0.1:8080; #此处的8080就是你安装frp时设置的vhost_http_port端口</span></span><br><span class="line">           proxy_set_header Host $host;</span><br><span class="line">           proxy_set_header X-Real-IP $clientRealip;  # $remote_addr;</span><br><span class="line">           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="调试测试配置文件"><a href="#调试测试配置文件" class="headerlink" title="调试测试配置文件"></a>调试测试配置文件</h3><ul>
-<li>配置完成后，先用 <strong>nginx –t</strong> 来测试下配置是否有误，正确无误的话，<strong>service nginx restart</strong> 重启nginx<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# nginx -t</span><br><span class="line">nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
+<li>配置完成后，先用 <strong>nginx –t</strong> 来测试下配置是否有误，正确无误的话，<strong>service nginx restart</strong> 重启nginx<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# nginx -t</span><br><span class="line">nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"frp.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"s.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>使用命令 <strong>systemctl status nginx.service</strong> 查看nginx日志信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# systemctl status nginx.service</span><br><span class="line">   nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sun 2018-09-02 03:22:31 UTC; 1min 14s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 2748 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, statu</span><br><span class="line">  Process: 2754 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 2751 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 2756 (nginx)</span><br><span class="line">    Tasks: 2 (limit: 4915)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─2756 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─2757 nginx: worker process</span><br><span class="line"></span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Starting A high performance web server and a reverse proxy server...</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: nginx.service: Failed to read PID from file /run/nginx.pid: Invalid argument</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Started A high performance web server and a reverse proxy server.</span><br></pre></td></tr></table></figure></li>
+<li>使用命令 <strong>systemctl status nginx.service</strong> 查看nginx日志信息<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# systemctl status nginx.service</span><br><span class="line">   nginx.service - A high performance web<span class="built_in"> server </span><span class="keyword">and</span> a reverse<span class="built_in"> proxy </span>server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sun 2018-09-02 03:22:31 UTC; 1min 14s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 2748 <span class="attribute">ExecStop</span>=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (<span class="attribute">code</span>=exited, statu</span><br><span class="line">  Process: 2754 <span class="attribute">ExecStart</span>=/usr/sbin/nginx -g daemon on; master_process on; (<span class="attribute">code</span>=exited, <span class="attribute">status</span>=0/SUCCESS)</span><br><span class="line">  Process: 2751 <span class="attribute">ExecStartPre</span>=/usr/sbin/nginx -t -q -g daemon on; master_process on; (<span class="attribute">code</span>=exited, <span class="attribute">status</span>=0/SUCCESS)</span><br><span class="line"> Main PID: 2756 (nginx)</span><br><span class="line">    Tasks: 2 (limit: 4915)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─2756 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─2757 nginx: worker process</span><br><span class="line"></span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Starting A high performance web<span class="built_in"> server </span><span class="keyword">and</span> a reverse<span class="built_in"> proxy </span>server<span class="built_in">..</span>.</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"frp.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"s.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"frp.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting<span class="built_in"> server </span>name <span class="string">"s.srgb.xyz"</span> on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: nginx.service: Failed <span class="keyword">to</span> read PID <span class="keyword">from</span> file /run/nginx.pid: Invalid argument</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Started A high performance web<span class="built_in"> server </span><span class="keyword">and</span> a reverse<span class="built_in"> proxy </span>server.</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2018/09/02/nginx_rewrite/" data-id="cjor9rmf0001jyoftqomq1hfu" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/09/02/nginx_rewrite/" data-id="cjqgj8tho002ceoftp91wnw1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/nginx/">nginx</a></li></ul>
@@ -122,11 +122,11 @@
     
 <nav id="article-nav">
   
-    <a href="../../../10/08/gcc_mcf/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../../10/08/mingw64_pk/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          国人编译的GCC,支持中文帮助信息
+          MinGW-w64 GCC编译器离线安装包下载
         
       </div>
     </a>
@@ -163,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -172,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -185,23 +185,23 @@
       <ul>
         
           <li>
+            <a href="../../../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../../11/21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../../11/17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/lnmp_org/">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -216,7 +216,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

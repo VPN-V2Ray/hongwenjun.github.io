@@ -131,13 +131,13 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
       tmux仍在后台运行，可以通过
       tmux attach进入 到指定的会话
 </code></pre><p><img src="/img/tmux.png" alt=""></p>
-<h3 id="tmux-conf-设定"><a href="#tmux-conf-设定" class="headerlink" title=".tmux.conf 设定"></a>.tmux.conf 设定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># https://www.youtube.com/watch?v=xTplsyQaGFs</span><br><span class="line"></span><br><span class="line"># tmux 启用鼠标操作</span><br><span class="line">setw -g mouse</span><br><span class="line">set-option -g history-limit 20000</span><br><span class="line">set-option -g mouse on</span><br><span class="line">bind -n WheelUpPane select-pane -t= \; copy-mode -e \; send-keys -M</span><br><span class="line">bind -n WheelDownPane select-pane -t= \; send-keys -M</span><br></pre></td></tr></table></figure>
+<h3 id="tmux-conf-设定"><a href="#tmux-conf-设定" class="headerlink" title=".tmux.conf 设定"></a>.tmux.conf 设定</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://www.youtube.com/watch?v=xTplsyQaGFs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tmux 启用鼠标操作</span></span><br><span class="line"><span class="string">setw </span>-g <span class="string">mouse</span></span><br><span class="line"><span class="string">set-</span><span class="string">option </span>-g <span class="string">history-limit </span><span class="string">20000</span></span><br><span class="line"><span class="string">set-</span><span class="string">option </span>-g <span class="string">mouse </span><span class="string">on</span></span><br><span class="line"><span class="string">bind </span>-n <span class="string">WheelUpPane </span><span class="string">select-pane </span>-t= \; <span class="string">copy-mode </span>-e \; <span class="string">send-keys </span>-M</span><br><span class="line"><span class="string">bind </span>-n <span class="string">WheelDownPane </span><span class="string">select-pane </span>-t= \; <span class="string">send-keys </span>-M</span><br></pre></td></tr></table></figure>
 <p><img src="/webp/tmux_mouse.gif" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2018/10/09/tmux_vim/" data-id="cjor9rmfi001yyoftp5803yx6" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/10/09/tmux_vim/" data-id="cjqgj8ti4002leoftqj1vh25g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/vim/">vim</a></li></ul>
@@ -148,19 +148,19 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
     
 <nav id="article-nav">
   
-    <a href="../../10/tmux_for_window/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../10/ffmpeg_gif2mp4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          tmux_for_windows可以在Git-Bash下使用
+          使用FFMPEG把gif转换到MP4格式方便上传
         
       </div>
     </a>
   
   
-    <a href="../../08/mingw64_pk/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../08/gcc_mcf/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MinGW-w64 GCC编译器离线安装包下载</div>
+      <div class="article-nav-title">国人编译的GCC,支持中文帮助信息</div>
     </a>
   
 </nav>
@@ -189,7 +189,7 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -198,7 +198,7 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -211,23 +211,23 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
       <ul>
         
           <li>
+            <a href="../../../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../../11/21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../../11/17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/lnmp_org/">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../../../11/05/besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -242,7 +242,7 @@ Ctrl+b d 退出tumx，并保存当前会话，这时，
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

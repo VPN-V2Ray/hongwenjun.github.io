@@ -67,10 +67,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-nginx_rewrite" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-tmux_vim" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2018/09/02/nginx_rewrite/" class="article-date">
-  <time datetime="2018-09-01T16:00:00.000Z" itemprop="datePublished">2018-09-02</time>
+    <a href="../../2018/10/09/tmux_vim/" class="article-date">
+  <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2018/09/02/nginx_rewrite/">Nginx 全站加密，http自动跳转https</a>
+      <a class="article-title" href="../../2018/10/09/tmux_vim/">Linux 终端 使用 tmux 分屏</a>
     </h1>
   
 
@@ -90,31 +90,53 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>蘭雅sRGB 龙芯小本服务器 | <a href="http://sRGB.vicp.net">sRGB.vicp.net</a></p>
-<h3 id="Nginx支持rewrite-http跳转https"><a href="#Nginx支持rewrite-http跳转https" class="headerlink" title="Nginx支持rewrite, http跳转https"></a>Nginx支持rewrite, http跳转https</h3><ul>
-<li><strong>vim /etc/nginx/sites-enabled/http</strong>     建立 <strong>http</strong> 配置文件，粘贴以下代码内容</li>
-</ul>
-<hr>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 使用全站加密，http自动跳转https</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">80</span>;</span><br><span class="line">    server_name www.srgb.xyz;</span><br><span class="line"></span><br><span class="line"># Nginx是支持rewrite的（只要在编译的时候没有去掉pcre）</span><br><span class="line"># 在http的server里增加</span><br><span class="line">    rewrite ^(.*) https:<span class="comment">//$host$1 permanent;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="也可以把http和https写在同一个文件里"><a href="#也可以把http和https写在同一个文件里" class="headerlink" title="也可以把http和https写在同一个文件里"></a>也可以把http和https写在同一个文件里</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># https 配置文件，存放 /etc/nginx/sites-enabled</span></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">443</span>;</span><br><span class="line">    server_name www.srgb.xyz; #填写绑定证书的域名</span><br><span class="line">    ssl on;</span><br><span class="line"></span><br><span class="line"># 找到存放nginx.conf文件  把证书文件<span class="number">1</span> 和 私钥文件<span class="number">2</span> 同nginx.conf放一起，本例放 /etc/nginx</span><br><span class="line">    ssl_certificate <span class="number">1</span>_www.srgb.xyz_bundle.crt;</span><br><span class="line">    ssl_certificate_key <span class="number">2</span>_www.srgb.xyz.key;</span><br><span class="line"></span><br><span class="line">    ssl_session_timeout <span class="number">5</span>m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1<span class="number">.1</span> TLSv1<span class="number">.2</span>; #按照这个协议配置</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; #按照这个套件配置</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /var/www;    #站点目录</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 使用全站加密，http自动跳转https</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">80</span>;</span><br><span class="line">    server_name www.srgb.xyz;</span><br><span class="line"></span><br><span class="line"># Nginx是支持rewrite的（只要在编译的时候没有去掉pcre）</span><br><span class="line"># 在http的server里增加</span><br><span class="line">    rewrite ^(.*) https:<span class="comment">//$host$1 permanent;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="frps-配置文件也可以独立起来存放"><a href="#frps-配置文件也可以独立起来存放" class="headerlink" title="frps 配置文件也可以独立起来存放"></a>frps 配置文件也可以独立起来存放</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># frps 配置文件，存放 /etc/nginx/sites-enabled</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span> $http_x_forwarded_for $clientRealip &#123;</span><br><span class="line">   <span class="string">""</span> $remote_addr;</span><br><span class="line">   ~^(?P&lt;firstAddr&gt;[<span class="number">0</span><span class="number">-9</span>\.]+),?.*$  $firstAddr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">       listen <span class="number">80</span>;</span><br><span class="line">       server_name frp.srgb.xyz;  #为frp的控制台绑定一个域名，这样你就可以用http:<span class="comment">//frp.srgb.xyz访问你的控制台了</span></span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass http:<span class="comment">//127.0.0.1:7500;  #此处的7500就是你安装frp时设置的dashboard_port端口</span></span><br><span class="line">           proxy_set_header Host $host;</span><br><span class="line">           proxy_set_header X-Real-IP $clientRealip;  # $remote_addr;</span><br><span class="line">           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">       listen <span class="number">80</span>;</span><br><span class="line">       server_name s.srgb.xyz;   #也可以将所有的srgb.xyz子域名都绑定，</span><br><span class="line">       location / &#123;</span><br><span class="line">           proxy_pass http:<span class="comment">//127.0.0.1:8080; #此处的8080就是你安装frp时设置的vhost_http_port端口</span></span><br><span class="line">           proxy_set_header Host $host;</span><br><span class="line">           proxy_set_header X-Real-IP $clientRealip;  # $remote_addr;</span><br><span class="line">           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="调试测试配置文件"><a href="#调试测试配置文件" class="headerlink" title="调试测试配置文件"></a>调试测试配置文件</h3><ul>
-<li>配置完成后，先用 <strong>nginx –t</strong> 来测试下配置是否有误，正确无误的话，<strong>service nginx restart</strong> 重启nginx<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# nginx -t</span><br><span class="line">nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>使用命令 <strong>systemctl status nginx.service</strong> 查看nginx日志信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~# systemctl status nginx.service</span><br><span class="line">   nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sun 2018-09-02 03:22:31 UTC; 1min 14s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 2748 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, statu</span><br><span class="line">  Process: 2754 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 2751 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 2756 (nginx)</span><br><span class="line">    Tasks: 2 (limit: 4915)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─2756 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─2757 nginx: worker process</span><br><span class="line"></span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Starting A high performance web server and a reverse proxy server...</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2751]: nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting server name &quot;frp.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest nginx[2754]: nginx: [warn] conflicting server name &quot;s.srgb.xyz&quot; on 0.0.0.0:80, ignored</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: nginx.service: Failed to read PID from file /run/nginx.pid: Invalid argument</span><br><span class="line">Sep 02 03:22:31 vultr.guest systemd[1]: Started A high performance web server and a reverse proxy server.</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p><img src="/webp/tmux.gif" alt=""></p>
+<h3 id="安装tmux工具"><a href="#安装tmux工具" class="headerlink" title="安装tmux工具"></a>安装tmux工具</h3><pre><code>apt-get install tmux
+</code></pre><h3 id="使用工具-tmux-分屏-每次都要先按-Ctrl-b"><a href="#使用工具-tmux-分屏-每次都要先按-Ctrl-b" class="headerlink" title="使用工具 tmux 分屏, 每次都要先按 Ctrl+b"></a>使用工具 tmux 分屏, 每次都要先按 Ctrl+b</h3><ol>
+<li>输入命令 tmux 使用工具</li>
+<li>上下分屏：Ctrl+b  再按 “</li>
+<li>左右分屏：Ctrl+b  再按 %</li>
+<li>切换屏幕：Ctrl+b  再按o</li>
+<li>关闭一个终端：Ctrl+b  再按x</li>
+<li>上下分屏与左右分屏切换： Ctrl+b  再按空格键</li>
+</ol>
+<h3 id="tmux-其他操作"><a href="#tmux-其他操作" class="headerlink" title="tmux 其他操作"></a>tmux 其他操作</h3><pre><code>可以使用 ctrl+a+d 退出 tmux 终端，这个比较通用
+tmux窗口选择：Ctrl+b 再按 ←↑→↓光标键选择
+Ctrl+b c   创建新窗口(桌面)
+Ctrl+b 0~9 选择几号窗口(桌面)
+Ctrl+b ? 显示快捷键帮助
+Ctrl+b C-o 调换窗口位置，类似与vim 里的C-w
+Ctrl+b 空格键 采用下一个内置布局
+Ctrl+b ! 把当前窗口变为新窗口
+Ctrl+b &quot; 模向分隔窗口
+Ctrl+b % 纵向分隔窗口
+Ctrl+b q 显示分隔窗口的编号
+Ctrl+b o 跳到下一个分隔窗口
+Ctrl+b 上下键 上一个及下一个分隔窗口
+Ctrl+b ALT-方向键 调整分隔窗口大小
+Ctrl+b n 选择下一个窗口
+Ctrl+b l 切换到最后使用的窗口
+Ctrl+b p 选择前一个窗口
+Ctrl+b w 以菜单方式显示及选择窗口
+Ctrl+b t 显示时钟
+Ctrl+b ; 切换到最后一个使用的面板
+Ctrl+b x 关闭面板
+Ctrl+b &amp; 关闭窗口
+Ctrl+b s 以菜单方式显示和选择会话
+Ctrl+b d 退出tumx，并保存当前会话，这时，
+      tmux仍在后台运行，可以通过
+      tmux attach进入 到指定的会话
+</code></pre><p><img src="/img/tmux.png" alt=""></p>
+<h3 id="tmux-conf-设定"><a href="#tmux-conf-设定" class="headerlink" title=".tmux.conf 设定"></a>.tmux.conf 设定</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://www.youtube.com/watch?v=xTplsyQaGFs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tmux 启用鼠标操作</span></span><br><span class="line"><span class="string">setw </span>-g <span class="string">mouse</span></span><br><span class="line"><span class="string">set-</span><span class="string">option </span>-g <span class="string">history-limit </span><span class="string">20000</span></span><br><span class="line"><span class="string">set-</span><span class="string">option </span>-g <span class="string">mouse </span><span class="string">on</span></span><br><span class="line"><span class="string">bind </span>-n <span class="string">WheelUpPane </span><span class="string">select-pane </span>-t= \; <span class="string">copy-mode </span>-e \; <span class="string">send-keys </span>-M</span><br><span class="line"><span class="string">bind </span>-n <span class="string">WheelDownPane </span><span class="string">select-pane </span>-t= \; <span class="string">send-keys </span>-M</span><br></pre></td></tr></table></figure>
+<p><img src="/webp/tmux_mouse.gif" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2018/09/02/nginx_rewrite/" data-id="cjor9rmf0001jyoftqomq1hfu" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/10/09/tmux_vim/" data-id="cjqgj8ti4002leoftqj1vh25g" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/nginx/">nginx</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/vim/">vim</a></li></ul>
 
     </footer>
   </div>
@@ -127,7 +149,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../16/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../15/">15</a><a class="page-number" href="../16/">16</a><span class="page-number current">17</span><a class="page-number" href="../18/">18</a><a class="page-number" href="../19/">19</a><span class="space">&hellip;</span><a class="page-number" href="../62/">62</a><a class="extend next" rel="next" href="../18/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="../16/">&laquo; 上一页</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../15/">15</a><a class="page-number" href="../16/">16</a><span class="page-number current">17</span><a class="page-number" href="../18/">18</a><a class="page-number" href="../19/">19</a><span class="space">&hellip;</span><a class="page-number" href="../65/">65</a><a class="extend next" rel="next" href="../18/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -151,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../tags/git/" style="font-size: 14px;">git</a> <a href="../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../tags/video/" style="font-size: 10px;">video</a> <a href="../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -160,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -173,23 +195,23 @@
       <ul>
         
           <li>
+            <a href="../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../2018/12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../2018/11/21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../2018/11/17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/lnmp_org/">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../../2018/11/05/besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -204,7 +226,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

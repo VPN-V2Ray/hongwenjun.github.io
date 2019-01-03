@@ -99,14 +99,14 @@ apt-get install tmux
 <p>  <a href="https://lnmp.org/auto.html" target="_blank" rel="noopener">https://lnmp.org/auto.html</a></p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://soft.vpser.net/lnmp/lnmp1.5.tar.gz -cO lnmp1.5.tar.gz &amp;&amp; \</span><br><span class="line">tar zxf lnmp1.5.tar.gz &amp;&amp; cd lnmp1.5 &amp;&amp; \</span><br><span class="line">LNMP_Auto=&quot;y&quot; DBSelect=&quot;2&quot; DB_Root_Password=&quot;lnmp.org&quot; \</span><br><span class="line">InstallInnodb=&quot;y&quot; PHPSelect=&quot;5&quot; SelectMalloc=&quot;1&quot; ./install.sh lnmp</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//soft.vpser.net/lnmp/lnmp1.5.tar.gz -cO lnmp1.5.tar.gz &amp;&amp; \</span></span><br><span class="line">tar zxf lnmp1.<span class="number">5</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span> &amp;&amp; cd lnmp1.<span class="number">5</span> &amp;&amp; \</span><br><span class="line">LNMP_Auto=<span class="string">"y"</span> DBSelect=<span class="string">"2"</span> DB_Root_Password=<span class="string">"lnmp.org"</span> \</span><br><span class="line">InstallInnodb=<span class="string">"y"</span> PHPSelect=<span class="string">"5"</span> SelectMalloc=<span class="string">"1"</span> ./install<span class="selector-class">.sh</span> lnmp</span><br></pre></td></tr></table></figure>
 <h3 id="后台安装方法"><a href="#后台安装方法" class="headerlink" title="后台安装方法"></a>后台安装方法</h3><ol>
 <li>先输入命令 tmux ，开启后台服务管理进程</li>
 <li>shift + insert 粘贴 把lnmp安装脚本，然后就可以默认安装了</li>
 <li>可以直接关闭远程登陆软件，vps会自己安装了</li>
 <li>安装都是下载源码编译，要不少时间，可以 tmux a 接入上去查看</li>
 </ol>
-<h3 id="安装好-lnmp-后控制台输入-lnmp管理"><a href="#安装好-lnmp-后控制台输入-lnmp管理" class="headerlink" title="安装好 lnmp 后控制台输入 lnmp管理"></a>安装好 lnmp 后控制台输入 lnmp管理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">root@568315379:~/lnmp1.5# lnmp</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">|    Manager for LNMP, Written by Licess    |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">|              https://lnmp.org             |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">Usage: lnmp &#123;start|stop|reload|restart|kill|status&#125;</span><br><span class="line">Usage: lnmp &#123;nginx|mysql|mariadb|php-fpm|pureftpd&#125; &#123;start|stop|reload|restart|kill|status&#125;</span><br><span class="line">Usage: lnmp vhost &#123;add|list|del&#125;</span><br><span class="line">Usage: lnmp database &#123;add|list|edit|del&#125;</span><br><span class="line">Usage: lnmp ftp &#123;add|list|edit|del|show&#125;</span><br><span class="line">Usage: lnmp ssl add</span><br><span class="line">Usage: lnmp &#123;dnsssl|dns&#125; &#123;cx|ali|cf|dp|he|gd|aws&#125;</span><br><span class="line">root@568315379:~/lnmp1.5#</span><br></pre></td></tr></table></figure>
+<h3 id="安装好-lnmp-后控制台输入-lnmp管理"><a href="#安装好-lnmp-后控制台输入-lnmp管理" class="headerlink" title="安装好 lnmp 后控制台输入 lnmp管理"></a>安装好 lnmp 后控制台输入 lnmp管理</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">root@<span class="number">568315379</span>:~/lnmp1<span class="number">.5</span># lnmp</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">|    <span class="type">Manager</span> <span class="keyword">for</span> LNMP, Written <span class="built_in">by</span> Licess    |<span class="type"></span></span><br><span class="line"><span class="type">+-------------------------------------------+</span></span><br><span class="line"><span class="type">|              https</span>://lnmp.org             |<span class="type"></span></span><br><span class="line"><span class="type">+-------------------------------------------+</span></span><br><span class="line"><span class="type">Usage</span>: lnmp &#123;start|<span class="type">stop</span>|<span class="type">reload</span>|<span class="type">restart</span>|<span class="type">kill</span>|<span class="type">status</span>&#125;</span><br><span class="line">Usage: lnmp &#123;nginx|<span class="type">mysql</span>|<span class="type">mariadb</span>|<span class="type">php</span>-fpm|<span class="type">pureftpd</span>&#125; &#123;start|<span class="type">stop</span>|<span class="type">reload</span>|<span class="type">restart</span>|<span class="type">kill</span>|<span class="type">status</span>&#125;</span><br><span class="line">Usage: lnmp vhost &#123;add|<span class="type">list</span>|<span class="type">del</span>&#125;</span><br><span class="line">Usage: lnmp database &#123;add|<span class="type">list</span>|<span class="type">edit</span>|<span class="type">del</span>&#125;</span><br><span class="line">Usage: lnmp ftp &#123;add|<span class="type">list</span>|<span class="type">edit</span>|<span class="type">del</span>|<span class="type">show</span>&#125;</span><br><span class="line">Usage: lnmp ssl add</span><br><span class="line">Usage: lnmp &#123;dnsssl|<span class="type">dns</span>&#125; &#123;cx|<span class="type">ali</span>|<span class="type">cf</span>|<span class="type">dp</span>|<span class="type">he</span>|<span class="type">gd</span>|<span class="type">aws</span>&#125;</span><br><span class="line">root@<span class="number">568315379</span>:~/lnmp1<span class="number">.5</span>#</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>lnmp 安装好后，最好安装下 pureftpd 服务，lnmp 可以管理ftp帐号</p>
 <pre><code>./pureftpd.sh
@@ -118,7 +118,7 @@ apt-get install tmux
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sRGB.vicp.net/2018/11/05/lnmp_org/" data-id="cjor9rmer001cyoft35ho662f" class="article-share-link">Share</a>
+      <a data-url="http://sRGB.vicp.net/2018/11/05/lnmp_org/" data-id="cjqgj8thy002heoftt12b0sua" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/vps/">vps</a></li></ul>
@@ -139,9 +139,9 @@ apt-get install tmux
     </a>
   
   
-    <a href="../besttrace/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../../10/18/lx2f5y/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">使用BestTrace查看VPS的去程和回程</div>
+      <div class="article-nav-title">龙芯 2F 小本5周年留念</div>
     </a>
   
 </nav>
@@ -170,7 +170,7 @@ apt-get install tmux
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 12px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
+      <a href="../../../../tags/CodeBlocks/" style="font-size: 20px;">CodeBlocks</a> <a href="../../../../tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="../../../../tags/carscam/" style="font-size: 10px;">carscam</a> <a href="../../../../tags/cpp/" style="font-size: 16px;">cpp</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="../../../../tags/frp/" style="font-size: 12px;">frp</a> <a href="../../../../tags/gcc/" style="font-size: 12px;">gcc</a> <a href="../../../../tags/git/" style="font-size: 14px;">git</a> <a href="../../../../tags/hexo/" style="font-size: 12px;">hexo</a> <a href="../../../../tags/linux/" style="font-size: 16px;">linux</a> <a href="../../../../tags/moments/" style="font-size: 14px;">moments</a> <a href="../../../../tags/nginx/" style="font-size: 12px;">nginx</a> <a href="../../../../tags/shadowsocks/" style="font-size: 12px;">shadowsocks</a> <a href="../../../../tags/ssh/" style="font-size: 10px;">ssh</a> <a href="../../../../tags/video/" style="font-size: 10px;">video</a> <a href="../../../../tags/vim/" style="font-size: 14px;">vim</a> <a href="../../../../tags/vps/" style="font-size: 18px;">vps</a>
     </div>
   </div>
 
@@ -179,7 +179,7 @@ apt-get install tmux
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/">2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/">2017</a></li></ul>
     </div>
   </div>
 
@@ -192,23 +192,23 @@ apt-get install tmux
       <ul>
         
           <li>
+            <a href="../../../../2019/01/03/WinKcp_Launcher/">Window KcpTun Udp2Raw 启动管理器 原理介绍 以及CodeBlocks简单GUI编程</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/24/iptables/">IPTABLES设置防火墙规则脚本 By 蘭雅sRGB</a>
+          </li>
+        
+          <li>
+            <a href="../../../12/23/golang_install/">linux下golang环境搭建自动脚本  by 蘭雅sRGB</a>
+          </li>
+        
+          <li>
             <a href="../../21/hexo_github/">Hexo 使用 github 编写个人博客</a>
           </li>
         
           <li>
             <a href="../../17/Windows_KCP/">Windows udp2raw+kcptun 加速tcp流量 简易工具  by 蘭雅sRGB</a>
-          </li>
-        
-          <li>
-            <a href="../acme_sh/">acme协议从letsencrypt生成免费的证书</a>
-          </li>
-        
-          <li>
-            <a href="">虚拟主机 VPS 一键安装LNMP教程</a>
-          </li>
-        
-          <li>
-            <a href="../besttrace/">使用BestTrace查看VPS的去程和回程</a>
           </li>
         
       </ul>
@@ -223,7 +223,7 @@ apt-get install tmux
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 hongwenjun<br>
+      &copy; 2019 hongwenjun<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
